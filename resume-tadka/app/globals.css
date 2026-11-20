@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { background: #FFFFFF; color: #292521; }
+
+:focus-visible { outline: 3px solid #F4C542; outline-offset: 2px; }
+
+@keyframes rt-flicker { 0%,100% { transform: scaleY(1) scaleX(1); } 50% { transform: scaleY(1.18) scaleX(.92); } }
+@keyframes rt-smoke { 0% { transform: translateY(0) scale(.6); opacity: 0; } 25% { opacity: .45; } 100% { transform: translateY(-140px) scale(1.7); opacity: 0; } }
+@keyframes rt-ember { 0% { transform: translate(0,0); opacity: 1; } 100% { transform: translate(14px,-110px); opacity: 0; } }
+@keyframes rt-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes rt-wobble { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(-1deg); } }
+@keyframes rt-pop { 0% { transform: scale(.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes rt-fade-up { 0% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+
+.rt-flame { transform-origin: 50% 100%; animation: rt-flicker .55s ease-in-out infinite; }
+.rt-smoke { animation: rt-smoke 2.6s ease-out infinite; }
+.rt-ember { animation: rt-ember 1.6s ease-out infinite; }
+.rt-float { animation: rt-float 3s ease-in-out infinite; }
+.rt-wobble { animation: rt-wobble 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+.rt-pop { animation: rt-pop .45s ease-out both; }
+.rt-fade-up { animation: rt-fade-up .45s ease-out both; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-flame, .rt-smoke, .rt-ember, .rt-float, .rt-wobble, .rt-pop, .rt-fade-up { animation: none; }
+  html { scroll-behavior: auto; }
+}
